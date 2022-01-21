@@ -6,6 +6,7 @@ public class Main {
 		
 		System.out.println("Hola coleguis");
 		System.out.println("Bienvenidos a la cabaña del misterio");
+		System.out.println("Soy Soos");
 		
 	}
 

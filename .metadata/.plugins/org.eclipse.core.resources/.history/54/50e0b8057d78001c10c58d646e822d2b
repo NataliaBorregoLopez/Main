@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<title>Spring10b-MVCData-Formulario</title>
+</head>
+<body>
+	<div class="container">
+		<h1>
+			Spring10b-MVCData <br /> Formulario
+		</h1>
+		<div align="center">
+			<h2>Formulario de Usuarios (añadir y modificar)</h2>
+			<form method="post" th:object="${user}" th:action="@{save}">
+				<input id="id" th:field="*{id}" type="hidden" />
+				<table>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

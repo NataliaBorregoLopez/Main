@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+    <title>Spring07-FormularioValidado_Registro</title>
+</head>
+
+<body>
+    <div id="contenedor">
+        <h2>Introduzca sus datos personales, por favor.</h2>
+        <div class="form-container">
+            <form method="post" th:object="${student}" th:action="@{/}">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="firstName">Nombre(*)</label>
+                        <div class="col-md-7">
+                            <input type="text" th:field="*{firstName}" class="form-control input-sm" />
+                            <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                class="has-errors help-inline">firstName Error</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="lastName">Apellido(*)</label>
+                        <div class="col-md-7">
+                            <input type="text" th:field="*{lastName}" class="form-control input-sm" />
+                            <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                class="has-errors help-inline">lastName Error</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="sex">Sexo (*)</label>
+                        <div class="col-md-7">
+                            <input type="radio" th:field="*{sex}" th:value="M" />Hombre<input type="radio"
+                                th:field="*{sex}" th:value="F" />Mujer
+                            <div th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}" class="has-errors help-inline">
+                                sex Error</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="dob">Fecha de nacimiento (dd/mm/yyyy) (*)</label>
+                        <div class="col-md-7">
+                            <input type="text" th:field="*{dob}" class="form-control input-sm" />
+                            <div th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}" class="has-errors help-inline">
+                                dob Error</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="email">Email
+                            (*)</label>
+                        <div class="col-md-7">
+                            <input type="text" th:field="*{email}" class="form-control input-sm" />
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                class="has-error help-inline">email Error</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="section">Tipo de estudios (*)</label>
+                        <div class="col-md-7">
+                            <ul>
+                                <li th:each="section: ${sections}">
+                                    <input type="radio" th:fiedl="*{section}" th:value="${section}" />
+                                    <label th:for="${#ids.prev('section')}" th:text="${section}"></label>
+                                </li>
+                            </ul>
+                            <div th:if="${#fields.hasErrors('section')}" th:errors="*{section}"
+                                class="has-errors help-inline"> section Error
+                                <section></section> Error
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="country">Pais (*)</label>
+                        <div class="col-md-7">
+                            <select th:field="*{country}">
+                                <option th:each="dropdownValue: ${countries}" th:value="${dropdownValue}"
+                                    th:text="${dropdownValue}"></option>
+                            </select>
+                            <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}"
+                                class="has-errors help-inline"> country Error
+                                <section></section> Error
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="firstAttempt">¿Eres novato?</label>
+                        <div class="col-md-7">
+                            <input type="checkbox" th:field="*{firstAttempt}" class="form-control input-sm" />
+                            <div th:if="${#fields.hasErrors('firstAttempt')}" th:errors="*{firstAttempt}"
+                                class="has-errors help-inline">firstAttempt Error</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="subjects">Cursos (*)</label>
+                        <div class="col-md-7">
+                            <select th:field="*{subjects}" class="form-control input-sm" multiple="multiple">
+                                <option th:each="dropdownValue: ${subjects}" th:value="${dropdownValue}"
+                                    th:text="${dropdownValue}"></option>
+                            </select>
+                            <div th:if="${#fields.hasErrors('subjects')}" th:errors="*{subjects}"
+                                class="has-error help-inline">subjects
+                                Error</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-actions floatRight">
+                        <input type="submit" value="Registrar" class="btn btn-primary btn-sm">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

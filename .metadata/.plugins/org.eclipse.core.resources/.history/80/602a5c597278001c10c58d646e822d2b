@@ -1,0 +1,6 @@
+package com.ejemplos.spring.controller;
+
+@Component
+public class RequestProcessingTimeInterceptor {
+
+}

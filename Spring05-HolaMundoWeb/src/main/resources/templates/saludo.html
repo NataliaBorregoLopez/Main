@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>saludo</title>
+</head>
+
+<body>
+    <div id="contenedor">
+<h2>Spring05-HolaMundoWeb</h2>
+<h3>Realizado con Thymeleaf</h3>
+<p th:text="'Bienvenida: Hola ' + ${name} + ', ' + ${greeting} " />
+<p th:text="'Hoy es día ' + ${#dates.format(fecha, 'dd-MM-yyyy HH:mm')}" />
+<p>Hasta la vista</p> 
+    </div>
+</body>
+
+</html>

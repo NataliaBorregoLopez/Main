@@ -1,0 +1,86 @@
+package com.ejemplos.spring.model;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.json.JSONObject;
+
+@Entity
+@Table(name="product")
+public class Product {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String name;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "company_id")
+	private Company company;
+
+	public Product() {
+		super();
+	}
+
+	public Product(String name) {
+		super();
+		this.name = name;
+	}
+
+	public Product(String name, Company company) {
+		super();
+		this.name = name;
+		this.company = company;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	@Override
+	public String toString() {
+		String info = "";
+		
+		JSONObject jsonInfo = new JSONObject();
+		jsonInfo.put("name", this.name);
+		
+		if(this.getCompany() != null) {
+			JSONObject companyObj = new JSONObject();
+			companyObj.put("name", this.getCompany().getName());
+			jsonInfo.put("company", companyObj);
+			info = jsonInfo.toString();
+		}
+		return info;
+	}
+	
+	
+
+	
+	
+}

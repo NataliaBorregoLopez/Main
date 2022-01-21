@@ -1,0 +1,34 @@
+package com.ejemplos.spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import javax.validation.Valid;
+import com.ejemplos.spring.model.Student;
+
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+
+@Controller
+@RequestMapping("/")
+public class HelloWorldController {
+
+	@GetMapping
+	public String newRegistration(ModelMap model) {
+		model.addAttribute("student", new Student());
+		System.out.println("--Dentro del controller--");
+		return "registro";
+	}
+
+	@PostMapping
+	public String saveRegistration(@Valid Student student, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			System.out.println("--Hay algunos errores--");
+			return "registro";
+		}
+		model.addAttribute("success",
+				"Estimado " + student.getFirstName() + ", su regitro se ha completado correctamente");
+		return "resumen";
+	}
+}

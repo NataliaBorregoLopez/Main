@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+    <title>Spring07-FormularioValidado_Resumen</title>
+</head>
+
+<body>
+    <div class="container" id="contenedor">
+        <h2>Estos son sus datos personales.</h2>
+        <div class="success">
+            <h3>Datos de registro:</h3>
+            <ul>
+                <li>Nombre: <span th:text="${student.firstName}" /></li>
+                <li>Apellidos: <span th:text="${student.lastName}" /></li>
+                <li>Sexo: <span th:text="${student.sex}" /></li>
+                <li>Fecha Nacimiento: <span th:text="${student.dob}" /></li>
+                <li>Email: <span th:text="${student.email}" /></li>
+                <li>Tipo de estudios: <span th:text="${student.section}" /></li>
+                <li>Pais: <span th:text="${student.country}" /></li>
+                <li>¿Novato?: <span th:text="${student.firstAttempt}" /></li>
+                <li>Materias elegidas: <span th:text="${student.subjects}" /></li>
+            </ul>
+        </div>
+        <div class="success">
+            <h3>Mensaje de confirmación</h3>
+            <span th:text="${success}" /> <br /> &nbsp;&nbsp;Le enviaremos un mensaje a la siguiente dirección de
+            correo: <span th:text="${student.email}" />.
+        </div>
+    </div>
+</body>
+
+</html>

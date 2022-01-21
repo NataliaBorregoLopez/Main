@@ -1,0 +1,17 @@
+package com.ejemplos.spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+
+@Controller
+@RequestMapping("/")
+public class HelloWorldController {
+
+	@GetMapping
+	public String newRegistration(ModelMap model) {
+		model.addAttribute("student", new Student());
+	}
+	
+}

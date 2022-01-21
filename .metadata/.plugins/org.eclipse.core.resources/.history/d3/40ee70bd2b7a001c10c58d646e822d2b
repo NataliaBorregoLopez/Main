@@ -1,0 +1,9 @@
+package com.ejemplos.spring.service;
+
+public interface HolaServicePlus {
+
+	public String saludar() {
+		return "Plus";
+	}
+	
+}

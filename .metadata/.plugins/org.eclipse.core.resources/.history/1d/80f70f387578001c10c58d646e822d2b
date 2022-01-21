@@ -1,0 +1,28 @@
+package com.ejemplos.spring.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+@Component
+public class RequestProcessingTimeInterceptor implements HandlerInterceptor {
+
+	private static final Logger logger = LoggerFactory.getLogger(RequestProcessingTimeInterceptor.class);
+	
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		long startTime = System.currentTimeMillis();
+		logger.info("--[Interceptor > PreHandle]: Arrancando " + request.getRequestURL().toString() + " y cronometro--");
+		request.setAttribute("startTime", startTime);
+		return true;
+	}
+	
+	@Override
+	public boolean postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+		logger.info("--[Interceptor > PostHandle]: Desplegando " + request.getRequestURL().toString() + " --");
+	}
+}

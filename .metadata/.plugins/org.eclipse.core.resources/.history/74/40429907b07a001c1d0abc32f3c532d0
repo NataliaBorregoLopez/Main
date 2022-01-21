@@ -8,7 +8,7 @@ public class Main {
 		System.out.println("Bienvenidos a la cabaña del misterio");
 		System.out.println("Soy Soos");
 		System.out.println("Este es mi amigo Dipper");
-		System.out.println("Adios");
+		
 		
 	}
 
